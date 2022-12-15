@@ -1,0 +1,14 @@
+#sytopbar{
+position:absolute;
+padding: 2px;
+z-index: 100;
+top:-300px;
+}
+
+.turksecurity
+{
+background: #84AFDE;
+color: #ffffff;
+font: bold 10px tahoma, verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif;
+border: 1px solid #4775A7;
+}

@@ -1,0 +1,24 @@
+%% #0 //burasý açýklamadýr
+%% // açýklama devamýdýr
+%% // açýklama devamýdýr
+birinci bilgi içeriði
+
+%% #10 //burasý açýklamadýr
+<table border="1"><tr>
+<td>bilgi1</td>
+<td>bilgi2</td>
+<td>bilgi3</td>
+</tr></table>
+%% #10 //burasý3. içeriktir 
+<table border="1"><tr>
+<td>bilgi4</td>
+<td>bilgi5</td>
+<td>bilgi6</td>
+</tr></table>
+
+%% #10 //burasý4. içeriktir 
+<form action="form_sonuc.asp" method="post">
+    Ýsim:  <input type="text" name="username"><br>
+    Email: <input type="text" name="email" ><br>
+    <input type="submit" name="submit" value="Bilgileri Gönder">
+</form>

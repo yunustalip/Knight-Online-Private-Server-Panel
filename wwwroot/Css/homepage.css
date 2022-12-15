@@ -1,0 +1,85 @@
+<!--
+body:active{
+cursor: url(../imgs/CursorEl02.cur) , auto;
+}
+body,a {
+cursor: url(../imgs/cursor.cur) , auto;
+}
+
+a:hover {
+cursor: url(../imgs/cursor2.cur) , auto;
+}
+a:active{
+cursor: url(../imgs/CursorEl02.cur) , auto;
+}
+
+label {
+cursor: url(../imgs/cursor.cur) , auto;
+}
+label:hover{
+cursor: url(../imgs/cursor.cur) , auto;
+}
+label:active{
+cursor:url(../imgs/CursorEl02.cur) , auto;
+}
+
+input{
+cursor:url(../imgs/cursor.cur) , auto;
+}
+input:active{
+cursor:url(../imgs/CursorEl02.cur) , auto;
+}
+
+select{
+cursor:url(../imgs/cursor.cur) , auto;
+}
+select:active{
+cursor:url(../imgs/CursorEl02.cur) , auto;
+}
+
+
+
+:focus {outline: none;}
+::-moz-selection{
+	background:#C6CB5C;
+	color:#fff;
+}
+
+::selection {
+	background:#C6CB5C;
+	color:#fff;
+}-->
+<!--
+.style5 {
+	font-size: 18px
+}
+.style6 {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#hintbox{ /*CSS for pop up hint box */
+position:absolute;
+top: 0;
+background-color: lightyellow;
+width: 150px; /*Default width of hint.*/ 
+padding: 3px;
+border:1px solid black;
+font:normal 11px Verdana;
+line-height:18px;
+z-index:100;
+border-right: 3px solid black;
+border-bottom: 3px solid black;
+visibility: hidden;
+}
+
+.hintanchor{ /*CSS for link that shows hint onmouseover*/
+font-weight: bold;
+color: navy;
+margin: 3px 8px;
+}
+-->
+
+body {background-image:url('../imgs/bat_roof.gif');
+	background-attachment:fixed;
+	background-position:center; }
+

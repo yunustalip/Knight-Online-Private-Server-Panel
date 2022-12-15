@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<eklenti_adi>Download Sistemi</eklenti_adi>
+<aspcode><![CDATA[
+
+Response.Write "<title>"&siteadi&"</title>"
+dkid = Request.QueryString ("dkid")
+IF Not IsNumeric(Request.QueryString ("dkid")) THEN
+response.Redirect "hata.asp"
+End if
+down_id = Request.QueryString ("downid")
+IF Not IsNumeric(Request.QueryString ("downid")) THEN
+response.Redirect "hata.asp"
+End if
+
+act = request.querystring("act")
+if act = "yukle" then
+call yukle
+elseif act = "kategori" then
+call kategori
+elseif act = "" then
+call ilk
+end if
+sub ilk
+
+Response.Write "<table width=""100%""><tr><td align=""center""><a href=""default.asp?islem=bilesen&component=download""><img src=images/download.jpg border=0></a></td></tr></table><strong>"&category&"</strong></strong></strong><br><table width=""100%"" border=""0"" cellpadding=""1"" cellspacing=""1""><tr>"
+SQLdown ="SELECT * from gop_download_kat order by dk_adi asc;"
+set down = server.createobject("ADODB.Recordset")
+down.open SQLdown , Baglanti
+if down.eof or down.bof then 
+Response.write not_data
+else
+
+for k=1 to "50"
+if down.eof then exit for
+
+
+response.Write "<td style=""BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 11px; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid; FONT-FAMILY: verdana; font-weight:bold"" align=""center""><a href=""default.asp?islem=bilesen&component=download&act=kategori&dkid="&down("dkid")&""">" & down("dk_adi") & "</a></td>"
+if k mod 4 = 0 then response.write "</tr><tr>"
+down.MoveNext
+next
+down.close
+set down=nothing
+response.Write "</tr></table>"
+end if
+
+Response.Write "<table width=""100%""><tr><td style=""BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 11px; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid; FONT-FAMILY: verdana; font-weight:bold"" align=""center"">...::: "&last_add&" :::...</td></tr></table>"
+
+deste = 10
+If Request.QueryString("s") <> "" Then 
+  Sayfa = CInt(Request.QueryString("s"))
+Else 
+  Sayfa = 1 
+End If 
+set veri = baglanti.Execute("select * from gop_download order by down_id DESC LIMIT "& (deste*Sayfa)-(deste) & "," & deste)
+if veri.eof or veri.bof then
+response.Write "<br><center>"&not_data&"</center>"
+else
+
+Response.Write "<table width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""10""><tr align=""left"">"
+
+
+Set SQLToplam = baglanti.Execute("select count(down_id) from gop_download") 
+TopKayit = SQLToplam(0) 
+
+for z=1 to deste
+if  veri.eof then exit for
+
+
+Response.Write "<td valign=""top""><b><img src=upload/"& veri("down_resim") &" height=""75"" width=""100"" align=""left"" onerror=""this.src='images/joomlasp.jpg'"" align=left height=75 width=100></td><td><b>" & veri("down_adi") & "...</b><br>"& veri("down_bilgi")&"...<br><strong>Hit:</strong>"&veri("down_hit")&"</td><td width=75><a href=default.asp?islem=bilesen&component=download&act=yukle&down_id="&veri("down_id")&">"&download_in&" >></a></td>"
+if z mod 1 = 0 then response.write "</tr><tr>"
+
+veri.MoveNext
+next
+veri.close
+set veri=nothing
+end if
+
+Response.Write "</tr></table><div align=""center"">"
+
+If CInt(TopKayit) > CInt(deste) Then 
+SayfaSayisi = CInt(TopKayit) / CInt(deste) 
+If InStr(1,SayfaSayisi,",",1) > 1 Then SayfaSayisi = CInt(Left(SayfaSayisi,InStr(1,SayfaSayisi,",",1))) + 1 
+
+If SayfaSayisi > 1 Then 
+Response.Write "<a class=pagenav href=default.asp?islem=bilesen&component=download&&s=1><< "&start_page&"</a> "
+if Sayfa = 1 then
+Response.Write ""
+else
+Response.Write "<a class=pagenav href=default.asp?islem=bilesen&component=download&s="&Sayfa-1&">< "&prev_page&"</a> "
+end if
+
+for t=d to Sayfa-1
+if Sayfa > Sayfa-5 and t > Sayfa-5  and t > 0 then
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=download&s=" & t & "><b>" & t & "</b></a> "
+end if
+next 
+
+For d=Sayfa To Sayfa+4
+if d = CInt(Sayfa) then
+Response.Write "<span class=pagenav><b>" & d & "</b></span>"
+elseif d > SayfaSayisi then
+Response.Write ""
+else
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=download&down_id="&down_id&"&s=" & d & "><b>" & d & "</b></a> " 
+end if
+Next
+
+
+if Sayfa = SayfaSayisi then
+Response.Write ""
+else
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=download&s="&Sayfa+1&"> "&next_page&" ></a> "
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=download&s="&SayfaSayisi&">"&end_page&" >></a>"
+End If
+End If
+End If 
+Response.Write "</div>"
+end sub
+
+sub kategori
+Response.Write "<table width=""100%""><tr><td align=""center""><a href=""default.asp?islem=download""><img src=images/download.jpg border=0></a></td></tr></table><strong>"&category&"</strong></strong></strong><br><table width=""100%"" border=""0"" cellpadding=""1"" cellspacing=""1""><tr>"
+SQLdown ="SELECT * from gop_download_kat order by dk_adi asc;"
+set down = server.createobject("ADODB.Recordset")
+down.open SQLdown , Baglanti
+if down.eof or down.bof then 
+Response.write not_category
+else
+
+for k=1 to "50"
+if down.eof then exit for
+
+
+response.Write "<td style=""BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 11px; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid; FONT-FAMILY: verdana; font-weight:bold"" align=""center""><a href=""default.asp?islem=bilesen&component=download&act=kategori&dkid="&down("dkid")&""">" & down("dk_adi") & "</a></td>"
+if k mod 4 = 0 then response.write "</tr><tr>"
+down.MoveNext
+next
+down.close
+set down=nothing
+response.Write "</tr></table>"
+end if
+
+Response.Write "<table width=""100%""><tr><td style=""BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 11px; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid; FONT-FAMILY: verdana; font-weight:bold"" align=""center"">...::: "
+
+
+set downn = baglanti.Execute("select * from gop_download_kat where dkid=" & CInt(request.querystring("dkid")))
+if downn.eof or downn.bof then
+response.Write not_data
+else
+Response.Write downn("dk_adi")
+downn.close
+set downn=nothing
+end if
+Response.Write " :::...</td></tr></table>"
+
+deste = 10
+If Request.QueryString("s") <> "" Then 
+  Sayfa = CInt(Request.QueryString("s"))
+Else 
+  Sayfa = 1 
+End If 
+set veri = baglanti.Execute("select * from gop_download where dkid=" & guvenlik(request.querystring("dkid")) & " order by down_id DESC LIMIT "& (deste*Sayfa)-(deste) & "," & deste)
+if veri.eof or veri.bof then
+response.Write "<br><center>"&not_data&"</center>"
+else
+Response.Write "<table width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""10""><tr align=""left"">"
+
+Set SQLToplam = baglanti.Execute("select count(down_id) from gop_download where dkid=" & guvenlik(request.querystring("dkid"))) 
+TopKayit = SQLToplam(0) 
+
+for z=1 to deste
+if  veri.eof then exit for
+
+
+Response.Write "<td valign=""top""><b><img src=upload/"& veri("down_resim") &" height=""75"" width=""100"" align=""left"" onerror=""this.src='images/joomlasp.jpg'"" align=left height=75 width=100></td><td><b>" & veri("down_adi") & "...</b><br>"& veri("down_bilgi")&"...<br><strong>Hit:</strong>"&veri("down_hit")&"</td><td width=75><a href=default.asp?islem=bilesen&component=download&act=yukle&down_id="&veri("down_id")&">"&download_in &" >></a></td>"
+if z mod 1 = 0 then response.write "</tr><tr>"
+
+veri.MoveNext
+next
+veri.close
+set veri=nothing
+end if
+
+Response.Write "</tr></table><div align=""center"">"
+
+If CInt(TopKayit) > CInt(deste) Then 
+SayfaSayisi = CInt(TopKayit) / CInt(deste) 
+If InStr(1,SayfaSayisi,",",1) > 1 Then SayfaSayisi = CInt(Left(SayfaSayisi,InStr(1,SayfaSayisi,",",1))) + 1 
+
+If SayfaSayisi > 1 Then 
+Response.Write "<a class=pagenav href=default.asp?islem=bilesen&component=download&act=kategori&dkid="&dkid&"&s=1><< "&start_page&"</a> "
+if Sayfa = 1 then
+Response.Write ""
+else
+Response.Write "<a class=pagenav href=default.asp?islem=bilesen&component=download&act=kategori&dkid="&dkid&"&s="&Sayfa-1&">< "&prev_page&"</a> "
+end if
+
+for t=d to Sayfa-1
+if Sayfa > Sayfa-5 and t > Sayfa-5  and t > 0 then
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=download&act=kategori&dkid="&dkid&"&s=" & t & "><b>" & t & "</b></a> "
+end if
+next 
+
+For d=Sayfa To Sayfa+4
+if d = CInt(Sayfa) then
+Response.Write "<span class=pagenav><b>" & d & "</b></span>"
+elseif d > SayfaSayisi then
+Response.Write ""
+else
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=download&act=kategori&dkid="&dkid&"&s=" & d & "><b>" & d & "</b></a> " 
+end if
+Next
+
+
+if Sayfa = SayfaSayisi then
+Response.Write ""
+else
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=download&act=kategori&dkid="&dkid&"&s="&Sayfa+1&"> "&next_page&" ></a> "
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=download&act=kategori&dkid="&dkid&"&s="&SayfaSayisi&">"&end_page&" >></a>"
+End If
+End If
+End If 
+
+Response.Write "</div>"
+end sub
+
+sub yukle
+Response.Write "<table width=""100%""><tr><td align=""center""><a href=""default.asp?islem=bilesen&component=download""><img src=images/download.jpg border=0></a></td></tr></table><strong>"& category &"</strong></strong></strong><br><table width=""100%"" border=""0"" cellpadding=""1"" cellspacing=""1""><tr>"
+SQLdown ="SELECT * from gop_download_kat order by dk_adi asc;"
+set down = server.createobject("ADODB.Recordset")
+down.open SQLdown , Baglanti
+if down.eof or down.bof then 
+Response.write not_category
+else
+
+for k=1 to "50"
+if down.eof then exit for
+
+
+response.Write "<td style=""BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 11px; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid; FONT-FAMILY: verdana; font-weight:bold"" align=""center""><a href=""default.asp?islem=bilesen&component=download&act=kategori&dkid="&down("dkid")&""">" & down("dk_adi") & "</a></td>"
+if k mod 4 = 0 then response.write "</tr><tr>"
+down.MoveNext
+next
+down.close
+set down=nothing
+response.Write "</tr></table>"
+end if
+
+Response.Write "<table width=""100%""><tr><td style=""BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 11px; BORDER-LEFT: black 1px solid; COLOR: black; BORDER-BOTTOM: black 1px solid; FONT-FAMILY: verdana; align=""center"">...::: "
+
+
+set downn = baglanti.Execute("select * from gop_download where down_id=" & CInt(request.querystring("down_id")))
+if downn.eof or downn.bof then
+response.Write not_data
+else
+Response.Write downn("down_adi")
+downn.close
+set downn=nothing
+end if
+Response.Write " :::...</td></tr></table>"
+
+
+Response.Write "<table width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""10""><tr align=""left""><td>"
+
+dim indir
+Set indir = baglanti.Execute("Select * from gop_download where down_id=" & guvenlik(request.querystring("down_id")) & " ;")
+if indir.eof or indir.bof then
+Response.Redirect "404.asp"
+else
+down_hit = indir("down_hit")
+baglanti.Execute("UPDATE gop_download set down_hit='"&down_hit+1&"' where down_id=" & guvenlik(request.querystring("down_id")) & " ;")
+Response.Write "<b>"& indir("down_adi") &"</b><br><img src=upload/"& indir("down_resim") &" height=""75"" width=""100"" align=""left"" onerror=""this.src='images/joomlasp.jpg'"" align=left height=75 width=100>"&indir("down_bilgi")&"<br><br><br><a href="&indir("down_link")&"><center><img src=""images/download.png""></center></a>"
+
+Response.Write "</td></tr></table>"
+End If
+indir.close 
+set indir=nothing 
+end sub
+
+]]></aspcode>
+<sqlsil><![CDATA[
+Baglanti.execute "DROP TABLE IF EXISTS `gop_download`;"
+Baglanti.execute "DROP TABLE IF EXISTS `gop_download_kat`;"
+]]>
+</sqlsil>
+<eklenti_yazar>JoomlASP</eklenti_yazar>
+<eklenti_k>download</eklenti_k>
+<eklenti_mail>info@joomlasp.com</eklenti_mail>
+<eklenti_web>info@joomlasp.com</eklenti_web>
+</item>

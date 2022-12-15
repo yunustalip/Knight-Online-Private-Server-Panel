@@ -1,0 +1,14 @@
+ilk yazılan satırımız
+
+
+
+yazılan 2. bilgiyazılan 3. bilgiyazılan 4. bilgiyeni satır 1
+yeni satır 2
+yeni satır 3
+
+
+
+yazılan 2. bilgiyazılan 3. bilgiyazılan 4. bilgi
+yeni satır 1
+yeni satır 2
+yeni satır 3

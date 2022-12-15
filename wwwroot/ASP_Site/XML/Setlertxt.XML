@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-9"?>
+
+<datadizin>
+   <SET>
+      <no>1</no>
+      <kategori>Web</kategori>
+      <set_adi>PHP Eğitim Seti</set_adi>
+      <fiyat>50</fiyat>
+   </SET>
+   <SET>
+      <no>4</no>
+      <kategori>Mühendislik</kategori>
+      <set_adi>AutoCad 2002</set_adi>
+      <fiyat>100</fiyat>
+   </SET>
+   <SET>
+      <no>2</no>
+      <kategori>Web</kategori>
+      <set_adi>ASP Eğitim Seti</set_adi>
+      <fiyat>150</fiyat>
+   </SET>
+   <SET>
+      <no>3</no>
+      <kategori>Ofis</kategori>
+      <set_adi>Office 2003 Eğitim Seti</set_adi>
+      <fiyat>40</fiyat>
+   </SET>
+</datadizin>

@@ -1,0 +1,10 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+QueryString'e <a href="form_sonuc.asp?ADSOYAD=bedri+akay&email=bedriakay@yasalegitim.com&Buton=G%F6nder">link</a> ile bilgi yollama 
+</body>
+</html>

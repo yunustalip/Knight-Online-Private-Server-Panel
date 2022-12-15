@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1254" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form name="form1" method="post" action="form_sonuc_post.asp">
+  <label>Ad Soyad
+  <input name="ADSOYAD" type="text" id="ADSOYAD">
+  </label>
+  <br>
+  <label>E-posta
+  &nbsp;&nbsp;&nbsp;
+  <input type="text" name="email">
+  <br>
+  </label>
+  <label>
+  <input type="submit" name="Buton" value="Gönder">
+  </label>
+  <input type="hidden" name="gizlibilgi" value="gizli form">
+  <br>
+  <table width="392">
+    <tr>
+      <th width="188" scope="col"><TABLE width="172" BORDER = 0>
+        <TR>
+          <TD><INPUT TYPE="Radio" NAME="Radyo" VALUE="radyo1" CHECKED>
+            Radyo Düğmesi  1<BR>
+            <INPUT TYPE="Radio" NAME="Radyo" VALUE="radyo2">
+            Radyo Düğmesi  2<BR>
+            <INPUT TYPE="Radio" NAME="Radyo" VALUE="radyo3">
+            Radyo Düğmesi  3</TD>
+        </TR>
+      </TABLE>
+      </th>
+      <th width="188" scope="col"><TABLE width="161" BORDER = 0>
+        <TR>
+          <TD width="184"><INPUT TYPE="Checkbox" NAME="IsaretKutusu" VALUE="Isaret1">
+            İşaret Kutusu 1<BR>
+            <INPUT TYPE="Checkbox" NAME="IsaretKutusu" VALUE="Isaret2">
+            İşaret Kutusu 2<BR>
+            <INPUT TYPE="Checkbox" NAME="IsaretKutusu" VALUE="Isaret3">
+            İşaret Kutusu 3</TD>
+        </TR>
+      </TABLE></th>
+    </tr>
+    <tr>
+      <th scope="col"><select name="SecimListesi" size="1">
+        <option value="SecimListesi1">Popup 1 
+        <option value="SecimListesi2">Popup 2 
+        <option value="SecimListesi3">Popup 3 
+        </select></th>
+      <th scope="col"><select name="CokluSecim" size="3" multiple>
+        <option value="CokluSecim1">Çoklu Seçme Kutusu 1
+          <option value="CokluSecim2">Çoklu Seçme Kutusu 2
+          <option value="CokluSecim3" selected>Çoklu Seçme Kutusu 3
+      </select></th>
+    </tr>
+  </table>
+  <br>
+</form>
+</body>
+</html>

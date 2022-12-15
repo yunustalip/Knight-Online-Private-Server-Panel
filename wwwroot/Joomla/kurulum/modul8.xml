@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<moduladi>Arama v1.0.3</moduladi>
+<aspcode><![CDATA[
+
+Response.Write "<div class=""module-box box-yellow icon-search""><div><div><div><h3>Arama</h3><form action=""default.asp?islem=bilesen&component=arama"" method=""post""><input name=""ara"" type=""text"" class=""inputbox"" value=""Arama Yap..."" size=""15""></form></div></div></div></div>"
+
+
+]]></aspcode>
+<modulyer>sag</modulyer>
+<modulsira>1</modulsira>
+<modulizin>1</modulizin>
+<modulyazar>JoomlASP</modulyazar>
+<mail>info@joomlasp.com</mail>
+</item>

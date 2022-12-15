@@ -1,0 +1,55 @@
+FONT-FAMILY: Tahoma, sans-serif COLOR: #006666;
+}
+BODY {
+	FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif
+}
+TABLE {
+	FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif
+}
+TR {
+	FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif
+}
+TD {
+	FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif
+}
+INPUT {BORDER: #006666 1px solid; BACKGROUND: #FFFFFF;
+	FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif
+
+}
+
+
+SELECT { FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif}
+
+
+
+TEXTAREA { BORDER: #006666 1px solid; 
+	FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif
+}
+
+A { FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif }
+
+A:active {COLOR: red }
+A:link {COLOR: #006666; TEXT-DECORATION: none}
+A:visited {
+	COLOR: #006666; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff3300; TEXT-DECORATION: underline
+}
+.text {
+	FONT-SIZE: 11px; COLOR:#006666; FONT-FAMILY: Tahoma, sans-serif
+}
+.textk {
+	FONT-SIZE: 11px; COLOR: #006666; FONT-FAMILY: Tahoma, sans-serif
+}
+.liste {
+	FONT-SIZE: 8px; FONT-FAMILY: Tahoma, sans-serif
+}
+
+.frm {
+	BORDER-RIGHT: #006666 1px solid; BORDER-TOP: #006666 1px solid;  BORDER-LEFT: #006666 1px solid; COLOR: #000000; BORDER-BOTTOM: #006666 1px solid
+}
+
+.tdbrd {
+ BORDER-BOTTOM: #FFFFFF 1px solid
+}

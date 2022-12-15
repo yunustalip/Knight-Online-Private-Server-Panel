@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_LiveData_params" value="1" />
+	<infoitem key="UD_LiveData_param0" value="No=1" />
+	<infoitem key="UD_Recordset1" value="name:No;datatype:5,name:kategori;datatype:202,name:set_adi;datatype:202,name:fiyat;datatype:3" />
+</info>

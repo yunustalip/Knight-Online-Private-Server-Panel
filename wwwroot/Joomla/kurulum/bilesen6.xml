@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<eklenti_adi>İletişim</eklenti_adi>
+<aspcode><![CDATA[
+Response.Write "<title>"&contact_us&"-"&siteadi&"</title>"
+act = request.querystring("act")
+if act = "gonder" then
+call gonder
+elseif act = "" then
+call ilk
+end if
+
+sub ilk
+Response.Write "<form name=""form1"" method=""post"" action=""default.asp?islem=bilesen&component=iletisim&act=gonder"">  <table width=""100%"" border=""0"" cellspacing=""0"" cellpadding=""0""><tr><td id=""menubaslik""><strong>"& contact_us &" </strong></td></tr><tr><td><p>&nbsp;</p><table width=""100%"" border=""0"" align=""center""><tr><td width=""26%""><strong>"& name1 &"-"& name2 &" </strong></td><td width=""4%""><strong>:</strong></td><td width=""70%""><input name=""adi"" type=""text"" id=""adi"" class=""inputtxt""> </td></tr><tr><td>"& email &"</td><td>:</td><td><input name=""mail"" type=""text"" id=""mail"" class=""inputtxt""></td></tr><tr><td><strong>"& age &"</strong></td><td><strong>:</strong></td><td><input name=""yas"" type=""text"" class=""inputtxt"" id=""yas"" size=""5"" maxlength=""2""></td></tr><tr><td>"& telephone &"</td><td>:</td><td><input name=""tel"" type=""text"" id=""tel"" value=""+90"" class=""inputtxt""></td></tr><tr><td><strong>"& message &"</strong></td><td><strong>:</strong></td><td><textarea name=""mesaj"" cols=""40"" rows=""5"" id=""mesaj"" class=""inputtxt""></textarea></td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td><input type=""reset"" name=""Reset"" value="""& reset &""" class=""buton""><input type=""submit"" name=""Submit2"" value="""& send &""" class=""buton""></td></tr></table></td></tr></table></form>"	
+end sub
+sub gonder
+
+Response.Write "<table width=""100%"" border=""0"" cellspacing=""0"" cellpadding=""0"">    <tr>      <td id=""menubaslik""><strong>Iletisim Formu </strong></td>    </tr>    <tr>      <td>"
+ 
+Response.Buffer = True 
+
+adi = Request.Form("adi")
+mail = Request.Form("mail")
+yas = Request.Form("yas")
+tel = Request.Form("tel")
+mesaj = Request.Form("mesaj")
+
+if adi="" or mail="" or mesaj="" then
+response.write "<center><font color=red face=verdana size=2>Hata! Lütfen alanlar bos birakmayiniz.<br><br>Geri</br></br></font>"
+response.end
+end if
+mesaj = Replace(mesaj,Chr(13),"<br>")
+
+SQL="insert into gop_iletisim (adi,mail,yas,tel,mesaj) values ('"&adi&"','"&mail&"','"&yas&"','"&tel&"','"&mesaj&"')"
+Baglanti.Execute(SQL)
+
+response.write "<p><p><br><center><font face=Verdana size=1 color=#ff0000>Mesajiniz Yollanmistir.<br><br><br><font face=Verdana size=1 color=#000000>Yöneticilerimiz en kisa sürede size döneceklerdir.. <br><br><p>Tesekkür Ederiz...</font>" 
+
+Response.Write"</p><p align=""center""><a href=""default.asp?islem=bilesen&componenet=iletisim"">Geri don </a></p>      </td>    </tr>  </table>"
+
+end sub
+
+]]></aspcode>
+<sqlsil><![CDATA[
+Baglanti.execute "DROP TABLE IF EXISTS `gop_iletisim`;"
+]]>
+</sqlsil>
+<eklenti_yazar>JoomlASP</eklenti_yazar>
+<eklenti_k>iletisim</eklenti_k>
+<eklenti_mail>info@joomlasp.com</eklenti_mail>
+<eklenti_web>info@joomlasp.com</eklenti_web>
+</item>

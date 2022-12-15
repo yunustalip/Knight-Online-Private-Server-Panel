@@ -1,0 +1,28 @@
+'Set Sayac=Server.CreateObject("MSWC.Counters")
+<object runat=server scope=Application id=SayfaSayac progid="MSWC.PageCounter"></object>
+<object runat=server scope=application id=Sayac progid="MSWC.Counters"></object>
+
+<script language="VBScript" runat=Server>
+Sub Application_OnStart
+Application ("Sitedeki_Ziyaretci_Sayisi")=0
+End Sub
+
+Sub Application_OnEnd
+End Sub
+
+Sub Session_OnStart
+session.timeout=1
+application.lock
+Application ("Sitedeki_Ziyaretci_Sayisi")=Application ("Sitedeki_Ziyaretci_Sayisi")+1
+application.unlock
+
+End Sub
+
+Sub  Session_OnEnd
+application.lock
+Application ("Sitedeki_Ziyaretci_Sayisi")=Application ("Sitedeki_Ziyaretci_Sayisi")-1
+application.unlock
+End Sub
+
+
+</script>

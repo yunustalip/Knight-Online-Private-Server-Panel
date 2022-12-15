@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<moduladi>Kategoriler v1.0.3</moduladi>
+<aspcode><![CDATA[
+
+Response.Write "<div class=""module-box box-yellow""><div><div><div>"
+Response.Write "<h3>"&category&"</h3><div id=""masterdiv"">"
+set RS_ANA_KATEGORI = baglanti.Execute("select * from gop_anakat where ankgoster = '"& 1 &"' order by ankorder asc LIMIT 0,100")
+for k=1 to "100"
+if RS_ANA_KATEGORI.eof then exit for
+Response.Write "<ul class=""menu-fill"" onmouseover=""this.style='cursor:hand'"" onclick=""SwitchMenu('sub"&k&"')"">"& RS_ANA_KATEGORI("ankadi")&"</ul><span class=""submenu"" id=""sub"&k&""">"
+
+
+
+'alt kategori
+set RS_ALT_KATEGORI = baglanti.Execute("select * from gop_kat where ankid='"& RS_ANA_KATEGORI("ankid") &"';")
+do  while not RS_ALT_KATEGORI.eof 
+Response.Write "<a href=""default.asp?islem=altkategori&katid="&RS_ALT_KATEGORI("katid")&""">"&RS_ALT_KATEGORI("katadi")&"</a><br>"
+RS_ALT_KATEGORI.movenext
+loop
+RS_ALT_KATEGORI.close
+set RS_ALT_KATEGORI=nothing
+'alt kategori bitis
+
+
+
+Response.Write "</span>"
+RS_ANA_KATEGORI.movenext
+next
+RS_ANA_KATEGORI.close
+set RS_ANA_KATEGORI=nothing
+Response.Write "</div></div></div></div></div>"
+
+
+]]></aspcode>
+<modulyer>sol</modulyer>
+<modulsira>2</modulsira>
+<modulizin>1</modulizin>
+<modulyazar>JoomlASP</modulyazar>
+<mail>info@joomlasp.com</mail>
+</item>

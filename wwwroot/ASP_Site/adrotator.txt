@@ -1,0 +1,17 @@
+REDIRECT reklam_yonlendir.asp
+WIDTH 150
+HEIGHT 150
+BORDER 0
+*
+/asp_site/resim/autocad2002.gif
+http://www.yasalegitim.com
+AutoCAD 2002 Eðitim Seti
+10
+/asp_site/resim/WinXP.gif
+-
+Windows XP Eðitim Seti
+10
+/asp_site/resim/excel.gif
+http://www.excel.com
+Excel 2003 Eðitim Seti
+10

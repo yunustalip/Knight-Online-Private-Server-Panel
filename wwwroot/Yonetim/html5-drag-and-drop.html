@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+<center><title>HTML5 Drag and drop demonstration</title>
+<style type="text/css">
+#boxA, #boxB, #boxC { 
+  float:left; width:165px; height:65px; padding:10px; margin:10px; z-index:2
+}
+
+#boxA { background-color: #474747; }
+#boxB { background-color: #474747; }
+#boxC { background-color: #474747; }
+
+
+</style>
+<script type="text/javascript">
+function dragStart(ev) {
+    ev.dataTransfer.effectAllowed='move';
+    //ev.dataTransfer.dropEffect='move';
+    ev.dataTransfer.setData("text/html", ev.target.getAttribute('id'));
+    ev.dataTransfer.setDragImage(ev.target,0,0);
+    return true;
+}
+
+function dragEnter(ev) {
+    var idelt = ev.dataTransfer.getData("text/html");
+    return true;
+}
+function dragOver(ev) {
+    var idelt = ev.dataTransfer.getData("text/html");
+    var id = ev.target.getAttribute('id');
+    if( (id =='boxA' || id =='boxC') && (idelt == 'drag' || idelt == 'drag3'|| idelt == 'drag4'))
+        return false;
+    else if( id =='boxB' && idelt == 'drag2')
+        return false;
+
+    else
+        return true;
+}
+
+
+function dragEnd(ev) {
+    ev.dataTransfer.clearData("text/html");
+    return true
+}
+
+function dragDrop(ev) {
+    var idelt = ev.dataTransfer.getData("text/html");
+    ev.target.appendChild(document.getElementById(idelt));
+    ev.stopPropagation();
+    return false; // return false so the event will not be propagated to the browser
+}
+
+</script>
+</head>
+<body>
+    <h1>Drag and drop HTML5 demo</h1>
+    <div>there are many other variables that can be used also, we will coer this another day.
+    </div> 
+<table><tr><td>
+
+   <div id="boxA"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+<img src="http://localhost/item/itemicon_3_1051_40_0.jpg" id="drag" draggable="true" alt="aasdasdasd"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">
+
+      <img src="http://localhost/item/itemicon_5_0801_30_0.jpg" id="drag2" draggable="true" alt="aasdasdasd"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">
+
+      <img src="http://localhost/item/itemicon_3_1051_40_0.jpg" id="drag3" draggable="true" alt="aasdasdasd"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">
+<div id="drag4" draggable="true"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)"><img src="http://localhost/item/itemicon_3_1051_40_0.jpg" draggable="true">asdasdad</div>
+    </div>
+</td><td>
+    <div id="boxB"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+    </div>
+</td><td>
+    <div id="boxC"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+    </div>
+</td></tr></table>
+    <div style="clear:both">Example created by <a href="http://html5tutorial.net/">HTML Tutorials</a>.</div>
+</body></center>
+</html>
+

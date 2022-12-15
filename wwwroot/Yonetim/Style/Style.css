@@ -1,0 +1,51 @@
+
+.cssTableFlat
+{
+	color: #000000; 
+	font-size: 11px; 
+	font-family: Tahoma, Verdana, Arial; 
+	background-color: threedface; 
+}
+
+.cssTableOutset
+{
+	color: #000000; 
+	font-size: 11px; 
+	font-family: Tahoma, Verdana, Arial; 
+	background-color: threedface; 
+	border:1px outset;
+}
+
+.cssTableInset
+{
+	color:#000000; 
+	font-size: 11px; 
+	font-family: Tahoma, Verdana, Arial; 
+	background-color: threedface;
+	border:1px inset;
+}
+
+.cssTableOuter
+{
+	background-color:threedface; 
+	border-top:1px outset;
+	border-left:1px outset;
+}
+.cssTableInner
+{
+	background-color:threedface;
+	border:1px inset;
+}
+
+.cssTextBox
+{
+	color: #000000; 
+	font-size: 11px; 
+	font-family: Tahoma, Verdana, Arial; 
+	background-color:#FFFFFF;
+	border:1px solid #808080;
+	height:18px;
+	width:175px;
+	padding-left:2px;
+	padding-right:2px;
+}

@@ -1,0 +1,189 @@
+body {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin: 0px;
+}
+
+table,
+.text,
+.smText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color : #000000;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+.bold {
+	color : #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.lgText {
+
+	font-family:comic sans ms;
+	font-size: 12px; 
+	font-weight: bold;
+}
+
+input,textarea {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color : #000000;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+
+form {
+	margin-bottom : 0;
+}
+
+.Emot {
+	border: 1px solid #FFFFFF;
+	background-color: #FFFFFF;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.Commands {
+	border: 1px solid #FFFFFF;
+	background-color: #FFFFFF;
+}
+
+.error {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color : #FF0000;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+.boldError {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color : #FF0000;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+fieldset { 
+	margin-bottom: 6px;
+	-moz-border-radius: .35em .45em .50em .40em;
+}
+
+.handCursor,
+label {
+	cursor: pointer;
+	cursor: hand;
+}
+
+hr {
+	height: 0px; 
+	border: solid #C80000 0px; 
+	border-top-width: 1px;
+}
+
+.chatUsersTitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px; 
+	color: #FFFFFF; 
+	font-weight: bold;
+}
+
+.Transparency {
+	filter: alpha(opacity=90);
+	-moz-opacity: 0.9;
+}
+
+/* --- Hyper Links --- */
+
+a,
+a:visited {
+	color : #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+a:hover,
+a:visited:hover {
+	color : #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration : none;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+a.boldLink,
+a.boldLink:visited {
+	color : #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+a.boldLink:hover,
+a.boldLink:visited:hover {
+	color : #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration : none;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+a.chatUsersTitle,
+a.chatUsersTitle:visited {
+	color : #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+a.chatUsersTitle:hover,
+a.chatUsersTitle:visited:hover {
+	color : #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration : underline;
+	font-size: 10px;
+	font-weight: bold;
+}
+
+a.smNULink,
+a.smNULink:visited {
+	color : #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+a.smNULink:hover,
+a.smNULink:visited:hover {
+	color : #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration : underline;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+a.chatRoomLink,
+a.chatRoomLink:visited {
+	color : #0000FF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: underline;
+	font-size: 10px;
+	font-weight: normal;
+}
+
+a.chatRoomLink:hover,
+a.chatRoomLink:visited:hover {
+	color : #0000FF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration : none;
+	font-size: 10px;
+	font-weight: normal;
+}

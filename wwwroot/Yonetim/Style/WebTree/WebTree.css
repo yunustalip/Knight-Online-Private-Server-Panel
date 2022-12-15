@@ -1,0 +1,30 @@
+.TreeView {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	white-space: nowrap;
+	width:100%px;
+}
+.TreeView img {
+	border: 0px;
+	vertical-align: middle;
+}
+.TreeView a {
+	color: #000000;
+	text-decoration: none;
+}
+.TreeView a.node,.TreeView a.nodeSel {
+	white-space: nowrap;
+	padding: 1px 2px 1px 2px;
+}
+.TreeView a.node:hover, .TreeView a.nodeSel:hover {
+	color: #000000;
+	background-color:#D0DBEA
+}
+.TreeView a.nodeSel {
+	color: #000000;
+	background-color:#D0DBEA
+}
+.TreeView .clip {
+	overflow: hidden;
+}

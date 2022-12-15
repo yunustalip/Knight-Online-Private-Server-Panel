@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<eklenti_adi>Arama Sistemi</eklenti_adi>
+<aspcode><![CDATA[
+
+Response.Write "<title>"&siteadi&"</title>"
+Response.Write "<table width=""100%"" border=""0"" cellspacing=""0"" cellpadding=""0""><tr><td valign=""top""><form action=""default.asp?islem=bilesen&component=arama"" method=""post""><p align=""center""><span style=""font-weight: bold"">"&search_word &" :</span><input name=""ara"" type=""text"" class=""inputbox""><span style=""font-weight: bold"">"& search_arena &" :</span><select name=""secenek"" class=""inputbox""><option value=""4"">"& all_arena &"</option><option value=""2"">"& heading &"</option><option value=""1"">"& content &"</option></select><input name=""submit"" type=""submit"" class=""button"" value="""& search &""" /><br><br /><strong><font color=""#FF0000"">"& example &" :</font></strong> <strong>"& search_word &" =</strong><font color=""#006600"">JoomlASP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font> <strong>"& search_arena &" =</strong> <font color=""#006600"">"& heading  &"</font></p><p align=""center""><br></p></div></form><table width=""100%"" border=""0"" align=""center"" cellpadding=""0"" cellspacing=""0""> "       
+
+ara=request("ara")
+secenek=request("secenek")
+deste = 10
+if Request("s")="" Then
+Sayfa=1
+else
+Sayfa=Cint(Request("s"))  
+End if
+
+
+if ara="" then
+response.write"<tr><td><center>"& search_notice1 &"</center></td></tr></table></table>"
+else
+
+    if secenek=1 then 
+  sorgu="vicerik"
+elseif secenek=2 then 
+  sorgu="vbaslik"
+ elseif secenek="" then
+  sorgu="vicerik"
+   end if 
+
+if secenek = 4 then
+set sc=server.CreateObject("adodb.recordset") 
+  sql =  "select * from gop_veriler where vicerik like '%"&ara&"%' or vbaslik like '%"&ara&"%' order by vhit desc LIMIT "& (deste*Sayfa)-(deste) & "," & deste
+  
+  Set SQLToplam = baglanti.Execute("select count(vid) from gop_veriler") 
+TopKayit = SQLToplam(0)
+else
+
+
+set sc=server.CreateObject("adodb.recordset") 
+  sql =  "select * from gop_veriler where "&sorgu&" like '%"&ara&"%' order by vhit desc LIMIT "& (deste*Sayfa)-(deste) & "," & deste 
+ 
+ Set SQLToplam = baglanti.Execute("select count(vid) from gop_veriler where "&sorgu&" like '%"&ara&"%'") 
+TopKayit = SQLToplam(0)
+
+  end if
+sc.open sql,baglanti,1,3 
+
+
+
+if sc.eof Then
+response.write "<center><br><br><img src=""img/hata.gif"" /><br><br><b><font color=""red"" size=2>"& search_notice2 &"</font></b></center><br>"
+end if 
+
+if Not sc.eof Then 
+For zayfa= 1 to 999 
+
+Response.Write "<tr><td width=""200""><span><b> <a href="""&session("siteadres")&"?islem=oku&vid="&sc("vid")&""">"&Replace(sc("vbaslik"),""&ara&"","<font style=""background-color:#FFCC00"" color=""#000000"">"&ara&"</font>")&"</a></b><br>" 
+Response.Write Replace(Left(sc("vicerik"),150),""&ara&"","<font style=""background-color:#FFCC00"" color=""#000000"">"&ara&"</font>")&"<br>"
+Response.Write "<i><a href="""&session("siteadres")&"/?islem=oku&vid="&sc("vid")&""">"&session("siteadres")&"/?islem=oku&vid="&sc("vid")&"</i></span></td></tr><tr><td height=""25""><hr size=""1""></td></tr>"
+
+
+sc.MoveNext
+if sc.eof Then exit For
+Next
+end if
+
+Response.Write "</table><div align=""center"">"
+        
+if secenek = 4 then
+Set rs = baglanti.Execute("SELECT COUNT(vid) AS toplam FROM gop_veriler where vbaslik like '%"&ara&"%' or vicerik like '%"&ara&"%'")
+else
+Set rs = baglanti.Execute("SELECT COUNT(vid) AS toplam FROM gop_veriler where "&sorgu&" like '%"&ara&"%'")
+end if 
+
+Response.Write "<br />Arama Kriterlerinize Uygun <font color=""#990000""><b>"& rs("toplam") & "</b></font> kayit bulundu.</div></td> </tr></table><div align=""center"">"
+
+
+If CInt(TopKayit) > CInt(deste) Then 
+SayfaSayisi = CInt(TopKayit) / CInt(deste) 
+If InStr(1,SayfaSayisi,",",1) > 1 Then SayfaSayisi = CInt(Left(SayfaSayisi,InStr(1,SayfaSayisi,",",1))) + 1 
+
+If SayfaSayisi > 1 Then 
+Response.Write "<a class=pagenav href=""?islem=arama&ara="&ara&"&s=1""><< Ilk</a> "
+if Sayfa = 1 then
+Response.Write ""
+else
+Response.Write "<a class=pagenav href=""?islem=arama&ara="&ara&"&s="&Sayfa-1&""">< Önceki</a> "
+end if
+
+for t=d to Sayfa-1
+if Sayfa > Sayfa-5 and t > Sayfa-5  and t > 0 then
+Response.Write " <a class=pagenav href=""?islem=arama&ara="&ara&"&s=" & t & """><b>" & t & "</b></a> "
+end if
+next 
+
+For d=Sayfa To Sayfa+4
+if d = CInt(Sayfa) then
+Response.Write "<span class=pagenav><b>" & d & "</b></span>"
+elseif d > SayfaSayisi then
+Response.Write ""
+else
+Response.Write " <a class=pagenav href=""?islem=arama&ara="&ara&"&s=" & d & """><b>" & d & "</b></a> " 
+end if
+Next
+
+
+if Sayfa = SayfaSayisi then
+Response.Write ""
+else
+Response.Write " <a class=pagenav href=""?islem=arama&ara="&ara&"&s="&Sayfa+1&"""> Sonraki ></a> "
+Response.Write " <a class=pagenav href=""?islem=arama&ara="&ara&"&s="&SayfaSayisi&""">Son >></a>"
+end if
+
+
+End If 
+End If 
+
+
+Response.Write "</div>"
+
+sc.close
+Set sc=Nothing
+end if
+
+]]></aspcode>
+<eklenti_yazar>JoomlASP</eklenti_yazar>
+<eklenti_k>arama</eklenti_k>
+<eklenti_mail>info@joomlasp.com</eklenti_mail>
+<eklenti_web>info@joomlasp.com</eklenti_web>
+</item>

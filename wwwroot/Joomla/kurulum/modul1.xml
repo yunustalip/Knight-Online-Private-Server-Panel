@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<moduladi>Ana Menü v1.0.3</moduladi>
+<aspcode><![CDATA[
+
+
+Response.Write "<div class=""module-box box-grey icon-arrow""><div><div><div>"
+Response.Write "<h3>Ana Menü</h3>"
+Response.Write "<ul class=""menu-fill"">"
+SQLmenu ="SELECT * FROM gop_menu where m_yan = '"& 1 &"' ORDER BY m_order asc limit 0,100;"
+set menu = server.createobject("ADODB.Recordset")
+menu.open SQLmenu , Baglanti
+
+do while not menu.eof 
+Response.Write "<li><a href="&menu("m_link")&" class=""mainlevel"">" & menu("m_adi") & "</a></li>"
+
+menu.MoveNext
+loop
+menu.close
+set menu=nothing
+Response.Write "</ul>"
+Response.Write "</div></div></div></div>"
+
+
+]]></aspcode>
+<modulyer>sol</modulyer>
+<modulsira>1</modulsira>
+<modulizin>1</modulizin>
+<modulyazar>JoomlASP</modulyazar>
+<mail>info@joomlasp.com</mail>
+</item>

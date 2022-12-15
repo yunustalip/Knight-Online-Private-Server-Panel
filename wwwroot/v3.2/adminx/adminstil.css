@@ -1,0 +1,16 @@
+body
+a:active{font-size: 11px;font-family: tahoma;font-weight:bold;color: #000000;text-decoration: none;}
+a:link{font-size: 11px;font-family: tahoma;font-weight:bold;color: #000000;text-decoration: none;}
+a:visited{font-size: 11px;font-family: tahoma;font-weight:bold;color: #000000;text-decoration: none;}
+a:hover{font-size: 11px;font-family: tahoma;font-weight:bold;color: #3F5D38;text-decoration: none;}
+
+.alan {font:11px tahoma;color:#000000;}
+.dugme {font:bold 11px tahoma;color:#000000;}
+.baslik {font:bold 14px trebuchet ms;color:#3F5D38;}
+.yazi {font:bold 11px tahoma;color:#000000;}
+
+.tablo  {background-color:#F8F8F8; border:1px solid #3F5D38; border-collapse: collapse; margin-top:1px; margin-bottom:1px;}
+.tablo1 {background-color:#E6EDCA}
+.tablo2 {background-color:#CEDCA7}
+
+.ust {background-image: url('images/bg.gif');}

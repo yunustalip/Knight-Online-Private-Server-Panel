@@ -1,0 +1,86 @@
+body         {background-color: #AEAEAE;}
+
+a:link
+{
+font-size: 12px;
+font-family: trebuchet ms;
+color: #353535;
+text-decoration: none;
+}
+a:visited
+{
+font-size: 12px;
+font-family: trebuchet ms;
+color: #353535;
+text-decoration: none;
+}
+a:hover
+{
+font-size: 12px;
+font-family: trebuchet ms;
+color: #85B61C;
+text-decoration: none;
+}
+a:active
+{
+font-size: 12px;
+font-family: trebuchet ms;
+color: #353535;
+text-decoration: none;
+}
+.blog a:active
+{
+font-size: 15px;
+font-family: trebuchet ms;
+font-weight: bold;
+color: #353535;
+text-decoration: none;
+}
+.blog a:link
+{
+font-size: 15px;
+font-family: trebuchet ms;
+font-weight: bold;
+color: #353535;
+text-decoration: none;
+}
+.blog a:visited
+{
+font-size: 15px;
+font-family: trebuchet ms;
+font-weight: bold;
+color: #353535;
+text-decoration: none;
+}
+.blog a:hover
+{
+font-size: 15px;
+font-family: trebuchet ms;
+font-weight: bold;
+color: #85B61C;
+text-decoration: none;
+}
+.baslik { font: 12px trebuchet ms; font-weight: bold; width:100%; color:white; }
+.orta { color:#000000; font-family:Trebuchet MS; font-size:12px; }
+.o_tab { background-color: #F2F2F2; background-image: url('images/orta_orta.gif'); background-repeat: repeat-y; color:#000000; font-family:Trebuchet MS; font-size:12px; margin-top:3px; }
+.blok_bg { background-color: #F7F5F5; background-image: url('images/blok_orta.gif'); background-repeat: repeat-y;}
+.blok { color:#000000; font-family:Trebuchet MS; font-size:12px; }
+.alan { font-size: 12px; font-family: trebuchet ms;}
+.dugme { font-size: 10px; font-family: trebuchet ms;}
+.menu { font-size: 16pt; font-family: Trebuchet ms; font-weight: bold; color:white}
+.menuk { font-size: 11px; font-family: Trebuchet ms; font-weight: bold; color:white}
+.title { font-size: 13pt; font-family: Trebuchet ms; color:#f5f5f5; }
+.b_baslik { font-size: 15px; font-family: Trebuchet ms; font-weight: bold;}
+.yorum_t { border: 1px solid #8DA06B; background-color:#ffffff; background-image: url('v3_img/y_bg.gif'); background-repeat: repeat-x; padding: 4px; }
+.yorum_t2 { border: 1px solid #8DA06B; background-color:#ffffff; background-image: url('v3_img/y_bg.gif'); background-repeat: repeat-x; padding: 4px; }
+.tool { border-collapse: collapse; border: 1px solid #E8E8E8; background-color: #FFFFFF; background-image: url('images/grad.gif'); background-repeat: repeat-x; }
+.altband { background-color: #1E6D8A; }
+.sozluk { text-decoration: underline; font-weight: bold; }
+.js_tool { border: 1px solid #B6B6B6; background-color: #F0F0F0; }
+.takvimbugun { background-color: #BDE4EA; font-weight: bold; float: center; }
+.gecissf { border-collapse: collapse; border-left-width: 0; border-right-width: 0; border-top: 1 solid #c9c9c9; border-bottom: 1 solid #c9c9c9; background-color: #ffffff; }
+.takvimay { font-size: 10px; font-family: trebuchet ms; color: #ffffff; font-weight:bold;}
+.takvimgun { font-size: 21px; font-family: trebuchet ms; color:#000000; font-weight: bold; }
+.alinti { border:1px inset; margin: 5px; padding:4px; background-color:#F7FCE2;}
+.takvimpasif { color:gray; font-family:Trebuchet MS; font-size:12px; }
+.etiket {border-left-width: 0px; border-right-width: 0px; border-top-width: 0px ; border-bottom-style: dotted; border-bottom-width: 1px}

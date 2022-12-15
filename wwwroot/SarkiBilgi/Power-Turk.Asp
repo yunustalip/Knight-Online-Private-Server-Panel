@@ -1,0 +1,105 @@
+﻿<%response.charset="utf-8"
+Session.codepage=65001
+
+REFERER_URL = Request.ServerVariables("HTTP_REFERER")
+Dosyaismi = lcase(Request.ServerVariables("Script_Name"))
+
+If InStr(8, REFERER_URL, "/") = 0 Then
+REFERER_DOMAIN = REFERER_URL
+Else
+REFERER_DOMAIN = Left(REFERER_URL, InStr(8, REFERER_URL, "/")-1)
+End If
+
+
+If REFERER_DOMAIN="http://fmradyodinle.net" or  REFERER_DOMAIN="http://www.fmradyodinle.net" or dosyaismi="/default.asp" or dosyaismi="/404.asp"  Then
+Else
+Response.Clear
+Response.Write "<a href=""http://www.FmRadyoDinle.net"">www.FmRadyoDinle.net</a>"
+Response.End
+End If
+
+If Instr(Request.ServerVariables("ALL_HTTP"),"HTTP_X_REQUESTED_WITH:")>0  or dosyaismi="/default.asp" or dosyaismi="/404.asp" Then
+Else
+Response.Clear
+Response.Write "<a href=""http://www.FmRadyoDinle.net"">www.FmRadyoDinle.net</a>"
+Response.End
+End If
+
+Const ServerURL = "http://46.20.4.58:8040"
+Gosterim = True
+Private  Function BinaryToString(Binary)
+Dim  cl1, cl2, cl3, pl1, pl2, pl3
+Dim  L
+cl1 = 1
+cl2 = 1
+cl3 = 1
+L = LenB(Binary)
+Do  While cl1<=L
+pl3 = pl3 &  Chr(AscB(MidB(Binary,cl1,1)))
+cl1 = cl1 + 1
+cl3 = cl3 + 1
+If  cl3>300  Then
+pl2 = pl2 & pl3
+pl3 = ""
+cl3 = 1
+cl2 = cl2 + 1
+If  cl2>200  Then
+pl1 = pl1 & pl2
+pl2 = ""
+cl2 = 1
+End  If
+End  If
+Loop
+BinaryToString = pl1 & pl2 & pl3
+End  Function
+Err.Clear
+On Error Resume Next
+	Function GETHTTP(adres) 
+		Set objXmlHttp = Server.CreateObject("MSXML2.ServerXMLHTTP")
+		objXmlHttp.Open "GET" , adres , false
+		objXmlHttp.sEnd 
+		GETHTTP = objXmlHttp.ResponseBody
+		Set objXmlHttp = Nothing
+	End Function
+
+Verimiz = GETHTTP(ServerURL)
+Veriler = BinaryToString(Verimiz)
+
+If Err.Number <> 0 Then
+	Gosterim = False
+End If
+
+If Instr(Veriler,"Server is currently down") > 0 Then
+	Gosterim = False
+End If
+
+IF Gosterim = True Then
+
+Basla3="Current Song: </font></td><td><font class=default><b>"
+Bitir3="</b></td></tr></table><br><table cellpadding=0 cellspacing=0 border=0 width=100"
+Itibaren3 = Instr(Veriler,Basla3)
+
+Sarki = Mid(Veriler,Itibaren3+53,len(Veriler))
+Ekadar3 = Instr(Sarki,Bitir3)
+CalanSarki = Mid(Sarki,1,Ekadar3-1)
+
+
+If Instr(CalanSarki,"-") Then
+SarkiBilgi=Split(CalanSarki,"-")
+Sanatci = SarkiBilgi(0)
+Sarki = SarkiBilgi(1)
+
+sarkim = sanatci &"-"& sarki
+Resim = "http://www.spectrummedya.com.tr/desktop/"&Trim(Sanatci)&".JPG"
+
+Response.Write "<table ><tr><td rowspan=""4""><img src="""&Resim&""" onError=src=""cover.png"" height=""95""></td><td class=""text"" valign=""bottom"">Şarkıcı: "&sanatci&"</td></tr><tr><td class=""text"" valign=""top"">Şarkı: "&sarki&"</td></tr><tr><td><a href=""javascript:SSoz('sarki="&sarki&"&sarkici="&sanatci&"');"">Şarkı Sözleri</a></td></tr>"
+Response.Write "<tr><td>"
+%>
+<!--#include File="../Mp3.asp"-->
+<%Response.Write "</td></tr>"
+Response.Write "</table>"
+Else
+
+End If
+
+End If %>

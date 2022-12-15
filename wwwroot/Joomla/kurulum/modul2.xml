@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<moduladi>Üye Bilgileri v1.0.3</moduladi>
+<aspcode><![CDATA[
+
+
+Response.Write "<div class=""module-box box-green icon-user""><div><div><div>"
+if Session("durum")="giris_yapmis" then 
+Set uye = Server.CreateObject("Adodb.Recordset")
+uye_id = Session("uye_id")
+Sorgu = "Select * from gop_uyeler where uye_id= " & uye_id
+uye.Open Sorgu, Baglanti, 1, 3
+if uye.eof then 
+Response.Write ""
+else
+
+Response.Write "<table border=""0"" cellpadding=""0"" cellspacing=""0""><tr align=""left""><td><h3>"&member_info&"</h3>Merhaba;<b>" & uye("uye_adi") & "</b></td></tr></table>"
+
+gid = uye("gid")
+
+if gid = 1 then
+Response.Write "<table width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""0""><tr align=""left""><td><a href=""administrator"" class=""mainlevel"">Administrator</a></td></tr></table>"
+end if
+Response.Write"<table width=""100%"" border=""0"" cellpadding=""0"" cellspacing=""0""><tr align=""left""><td><a href=default.asp?islem=bilgilerim class=""mainlevel"">"&profil&"</a></td></tr><tr align=""left""><td><a class=""mainlevel"" href=""default.asp?islem=uyeler""> "&members&"</a></td></tr><tr align=""left""><td><a class=""mainlevel"" href=""default.asp?islem=mesajlarim""> "&messages&""
+
+set mesajvar = baglanti.execute("select count(mesaj_id) as topla from gop_mesajlar where alici= "& uye_id &" and mesaj_sil=0 and mesaj_okundu=0")
+if mesajvar("topla") > "0" then
+response.Write "(<font color=""red""><b>"&mesajvar("topla")&" "&new_message&"</b></font>)"
+end if
+
+Response.Write "</a></td></tr><tr align=""left""><td><a class=""mainlevel"" href=""includes/uye_cikis.asp""> "&logout&" </a></td></tr></table>"
+tarih = Year(date)&"-"&Month(date)&"-"&Day(date)&" "&Hour(now)&":"&Minute(now)&":"&second(now)
+baglanti.Execute("UPDATE gop_uyeler set uye_son_tarih='"&tarih&"' where uye_adi='" & uye("uye_adi") & "' ;")
+
+end if
+else
+Response.write "<br><form class=""form"" action=""default.asp?islem=uye_kontrol"" method=""post""><table width=""150"" border=""0"" align=""center"" cellpadding=""0"" cellspacing=""0""><tr><td colspan=""3""><h3>"&member_clup&"</h3></td></tr><tr><td>"&username&"</td><td>:</td><td><input type=""text"" size=""10"" name=""uye_adi"" id=""uye_adi"" class=""inputbox"" /></td></tr><tr><td>"&password&"</td><td>:</td><td><input class=""inputbox"" type=""password"" size=""10"" name=""uye_sifre"" id=""uye_sifre"" /></td></tr><tr><td colspan=""3""><div align=""center""><input type=""submit"" class=""button"" name=""Submit"" id=""button"" value="""&login&"""></div></td></tr></table></form><br><a href=""default.asp?islem=yeniuye"">"&register&"</a> - <a href=""#"" onclick=""MM_openBrWindow('includes/uye_sifrehatirla.asp','','width=350,height=150')"">"&lost_pass&"</a><br>"
+end if
+Response.Write "</div></div></div></div>"
+
+
+]]></aspcode>
+<modulyer>sol</modulyer>
+<modulsira>4</modulsira>
+<modulizin>1</modulizin>
+<modulyazar>JoomlASP</modulyazar>
+<mail>info@joomlasp.com</mail>
+</item>

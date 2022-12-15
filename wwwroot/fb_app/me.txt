@@ -1,0 +1,42 @@
+{
+   "id": "637245921",
+   "name": "Talip Bozla\u011fan",
+   "first_name": "Talip",
+   "last_name": "Bozla\u011fan",
+   "link": "http://www.facebook.com/talipbozlagan",
+   "username": "talipbozlagan",
+   "birthday": "09/25/1992",
+   "hometown": {
+      "id": "116043768410018",
+      "name": "Kayseri, turkey"
+   },
+   "location": {
+      "id": "106012156106461",
+      "name": "Istanbul, Turkey"
+   },
+   "favorite_teams": [
+      {
+         "id": "218473211511963",
+         "name": "Be\u015fikta\u015f"
+      }
+   ],
+   "education": [
+      {
+         "school": {
+            "id": "102214146486298",
+            "name": "f\u00fcsun y\u00f6nder lisesi"
+         },
+         "year": {
+            "id": "142963519060927",
+            "name": "2010"
+         },
+         "type": "High School"
+      }
+   ],
+   "gender": "male",
+   "website": "http://www.cyber-warrior.org",
+   "timezone": 3,
+   "locale": "tr_TR",
+   "verified": true,
+   "updated_time": "2011-08-02T01:39:05+0000"
+}

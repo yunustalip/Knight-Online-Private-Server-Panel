@@ -1,0 +1,39 @@
+﻿<xml xmlns:s='uuid:BDC6E3F0-6DA3-11d1-A2A3-00AA00C14882'
+	xmlns:dt='uuid:C2F41010-65B3-11d1-A29F-00AA00C14882'
+	xmlns:rs='urn:schemas-microsoft-com:rowset'
+	xmlns:z='#RowsetSchema'>
+<s:Schema id='RowsetSchema'>
+	<s:ElementType name='row' content='eltOnly'>
+		<s:AttributeType name='No' rs:number='1' rs:nullable='true' rs:maydefer='true' rs:writeunknown='true'>
+			<s:datatype dt:type='float' dt:maxLength='8' rs:precision='15' rs:fixedlength='true'/>
+		</s:AttributeType>
+		<s:AttributeType name='kategori' rs:number='2' rs:nullable='true' rs:maydefer='true' rs:writeunknown='true'>
+			<s:datatype dt:type='string' dt:maxLength='255'/>
+		</s:AttributeType>
+		<s:AttributeType name='set_adi' rs:number='3' rs:nullable='true' rs:maydefer='true' rs:writeunknown='true'>
+			<s:datatype dt:type='string' dt:maxLength='255'/>
+		</s:AttributeType>
+		<s:AttributeType name='fiyat' rs:number='4' rs:nullable='true' rs:maydefer='true' rs:writeunknown='true'>
+			<s:datatype dt:type='int' dt:maxLength='4' rs:precision='10' rs:fixedlength='true'/>
+		</s:AttributeType>
+		<s:extends type='rs:rowbase'/>
+	</s:ElementType>
+</s:Schema>
+<rs:data>
+	<z:row No='1' kategori='XML Web Tasarım' set_adi='Dreamweaver MX 2004' fiyat='30'/>
+	<z:row No='2' kategori='Web' set_adi='HTML 4.0' fiyat='15'/>
+	<z:row No='3' kategori='Sinema' set_adi='Multimedya CD' fiyat='20'/>
+	<z:row No='4' kategori='Video' set_adi='Premiere 6.5' fiyat='30'/>
+	<z:row No='5' kategori='Programlama' set_adi='Visual Basic 6.0' fiyat='40'/>
+	<z:row No='6' kategori='Mühendislik' set_adi='AutoCAD 2002' fiyat='40'/>
+	<z:row No='7' kategori='Tasarım' set_adi='Adobe Photoshop 7.0' fiyat='30'/>
+	<z:row No='8' kategori='Sistem' set_adi='Mandrake Linux 9.2' fiyat='30'/>
+	<z:row No='9' kategori='Multimedya' set_adi='Director MX' fiyat='30'/>
+	<z:row No='10' kategori='Tasarım' set_adi='3DStudio MAX' fiyat='30'/>
+	<z:row No='11' kategori='Sistem' set_adi='Windows XP' fiyat='25'/>
+	<z:row No='12' kategori='Web' set_adi='Flash MX' fiyat='25'/>
+	<z:row No='13' kategori='Ofis' set_adi='OFFICE 2003' fiyat='30'/>
+	<z:row No='14' kategori='Web' set_adi='PHP &#x26; Veritabanı' fiyat='30'/>
+	<z:row No='15' kategori='Web' set_adi='ASP &#x26; VBScript' fiyat='30'/>
+</rs:data>
+</xml>

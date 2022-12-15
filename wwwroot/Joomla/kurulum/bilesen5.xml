@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<eklenti_adi>Link Sistemi</eklenti_adi>
+<aspcode><![CDATA[
+Response.Write "<title>"&siteadi&"</title>"
+link_id = Request.QueryString ("link_id")
+IF Not IsNumeric(Request.QueryString ("link_id")) THEN
+response.Redirect "hata.asp"
+
+End if
+
+If Request.QueryString("s") <> "" Then 
+  Sayfa = CInt(Request.QueryString("s"))
+Else 
+  Sayfa = 1 
+End If 
+
+act = request.querystring("act")
+if act = "yonlendir" then
+call yonlendir
+elseif act = "site_ekle" then
+call site_ekle
+elseif act = "ekle" then
+call ekle
+elseif act = "" then
+call ilk
+end if
+
+sub ilk
+link_id = Request.QueryString ("link_id")
+IF Not IsNumeric(Request.QueryString ("link_id")) THEN
+response.Redirect "hata.asp"
+
+End if
+
+If Request.QueryString("s") <> "" Then 
+  Sayfa = CInt(Request.QueryString("s"))
+Else 
+  Sayfa = 1 
+End If 
+
+Response.Write "<table width=""100%""><tr><td align=""center""><strong>...::: "&web_links&" :::... </strong></td></tr></table><br><table width=""100%"" border=""0"" cellpadding=""1"" cellspacing=""1""><tr>"
+set link = baglanti.Execute("select * from gop_linkler where link_onay='"& 1 &"' order by link_gosterim DESC LIMIT "& (100*Sayfa)-(100) & "," & 100)
+if link.eof or link.bof then 
+Response.write not_link
+else
+
+Set SQLToplam = baglanti.Execute("select count(link_id) from gop_linkler") 
+TopKayit = SQLToplam(0)
+
+
+for k=1 to "100"
+if link.eof then exit for
+
+
+response.Write "<td width=""5%"" align=center>"&k&"</td><td> <strong><a href=default.asp?islem=bilesen&component=linkler&act=yonlendir&link_id="&link("link_id")&" target=""blank"">"& link("link_adi")&"</a></strong><br>"&link("link_aciklama")&"<br><br></td><td width=""5%"" align=center>"&link("link_gosterim")&"</td>"
+if k mod 1 = 0 then response.write "</tr><tr>"
+link.MoveNext
+
+next
+link.close
+set link=nothing
+response.Write "</tr></table>"
+end if
+
+
+
+Response.Write "<div align=""center""><a href=default.asp?islem=bilesen&component=linkler&act=site_ekle>"&sumbit_link&"</a>"
+
+If CInt(TopKayit) > CInt(deste) Then 
+SayfaSayisi = CInt(TopKayit) / CInt(100) 
+If InStr(1,SayfaSayisi,",",1) > 1 Then SayfaSayisi = CInt(Left(SayfaSayisi,InStr(1,SayfaSayisi,",",1))) + 1 
+
+If SayfaSayisi > 1 Then 
+Response.Write "<a class=pagenav href=default.asp?islem=bilesen&component=linkler&s=1><< "&start_page&"</a> "
+if Sayfa = 1 then
+Response.Write ""
+else
+Response.Write "<a class=pagenav href=default.asp?islem=bilesen&component=linkler&s="&Sayfa-1&">< "&prev_page&"</a> "
+end if
+
+for t=d to Sayfa-1
+if Sayfa > Sayfa-5 and t > Sayfa-5  and t > 0 then
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=linkler&s=" & t & "><b>" & t & "</b></a> "
+end if
+next 
+
+For d=Sayfa To Sayfa+4
+if d = CInt(Sayfa) then
+Response.Write "<span class=pagenav><b>" & d & "</b></span>"
+elseif d > SayfaSayisi then
+Response.Write ""
+else
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=linkler&s=" & d & "><b>" & d & "</b></a> " 
+end if
+Next
+
+
+if Sayfa = SayfaSayisi then
+Response.Write ""
+else
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=linkler&s="&Sayfa+1&"> "&next_page&" ></a> "
+Response.Write " <a class=pagenav href=default.asp?islem=bilesen&component=linkler&s="&SayfaSayisi&">"&end_page&" >></a>"
+End If
+End If
+End If 
+Response.Write "</div>"
+
+end sub
+sub yonlendir
+Set yonlendir = baglanti.Execute("Select * from gop_linkler where link_id=" & guvenlik(request.querystring("link_id")) & " ;")
+if yonlendir.eof or yonlendir.bof then
+Response.Redirect "404.asp"
+else
+link_gosterim = yonlendir("link_gosterim")
+baglanti.Execute("UPDATE gop_linkler set link_gosterim='"&link_gosterim+1&"' where link_id=" & guvenlik(request.querystring("link_id")) & " ;")
+Response.Write "<meta http-equiv=""refresh"" content=""2;url=http://"&yonlendir("link_url")&"""><br><br><br><br><br><br><center><b>"&notice2&"</b></center>"
+
+End If
+yonlendir.close 
+set yonlendir=nothing 
+end sub
+sub site_ekle
+Response.Write "<form id=""form1"" name=""form1"" method=""post"" action=""default.asp?islem=bilesen&component=linkler&act=ekle""><table width=""100%"" border=""0""><tr><td colspan=""3""><span class=""style1"">"& add_link &"</span></td></tr><tr><td width=""9%"">"& header &"</td><td width=""1%"">:</td><td width=""90%""><input name=""link_adi"" type=""text"" class=""inputbox"" id=""link_adi"" />"& example &":<strong>JoomlASP Sitesi</strong></td></tr><tr><td>"& explanation &" </td><td>:</td><td><textarea name=""link_aciklama"" id=""link_aciklama"" cols=""45"" rows=""5""></textarea></td></tr><tr><td>"& link &"</td><td>:</td><td>http:// <input type=""text"" name=""link_url"" id=""link_url"" />"& notice1 &"</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td><input name=""Submit"" type=""submit"" class=""button"" value="& add &" /></td></tr></table>  <p>&nbsp;</p></form>"
+end sub
+sub ekle
+link_adi = guvenlik(Request.Form("link_adi"))
+link_aciklama = guvenlik(Request.Form("link_aciklama"))
+link_url = guvenlik(Request.Form("link_url"))
+link_onay = "0"
+link_gosterim = "0"
+
+link_aciklama = Replace(link_aciklama,Chr(13),"<br>")
+
+SQL="insert into gop_linkler (link_adi, link_aciklama, link_url, link_onay, link_gosterim) values ('"&link_adi&"','"&link_aciklama&"','"&link_url&"','"&link_onay&"','"&link_gosterim&"')"
+Baglanti.Execute(SQL)
+Response.Write "<meta http-equiv=""refresh"" content=""2;url=http://"&session("siteadres")&"/default.asp?islem=linkler""><br><br><br><br><br><br><center><b>"&notice3&"</b></center>"
+end sub
+
+]]></aspcode>
+<sqlsil><![CDATA[
+Baglanti.execute "DROP TABLE IF EXISTS `gop_linkler`;"
+]]>
+</sqlsil>
+<eklenti_yazar>JoomlASP</eklenti_yazar>
+<eklenti_k>linkler</eklenti_k>
+<eklenti_mail>info@joomlasp.com</eklenti_mail>
+<eklenti_web>info@joomlasp.com</eklenti_web>
+</item>

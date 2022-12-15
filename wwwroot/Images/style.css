@@ -1,0 +1,43 @@
+A:link{text-decoration: none; color:}
+A:visited {text-decoration: none; color:}
+A:active {text-decoration: none; color:}
+A:hover{text-decoration: none; color:#ffffff;}
+
+body{
+	font-family: "arial,helvetica";
+	background-color:black;
+	font-size: 9pt;
+	font-style: normal;
+	text-decoration: none;
+	line-height: 140%;
+	color: #FFFFFF;
+	margin-left: 0px; 
+    margin-right: 0px; 
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    scrollbar-face-color: #7E7263; scrollbar-shadow-color: #615B44; scrollbar-highlight-color: #F9F0D2; scrollbar-3dlight-color: #615B44; scrollbar-darkshadow-color: #1D1919; scrollbar-track-color: #C8C6C1; scrollbar-arrow-color: #D3D3D3;
+	}
+image {border = 0  }
+.input1 {  height: 17px; font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #2F2F2F; background-color: #FFFFFF; solid; border-color: #FFFFFF; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;}
+.input2 { height: 17px; font-family:"Times New Roman", "Times", "serif"; font-size: 8pt;color: #FFFFFF; background-color: #000000; solid; border-color: #FFFFFF; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;}
+.input3 { align="left": height: 17px; font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #FFEFD0; background-color: #1D1B19; solid; border-color: #FFFFFF; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px;}
+.input4 {  height: 17px; font-family:"Times New Roman", "Times", "serif"; font-size: 9pt; color: #FFCC00; background-color: #000000; solid; border-color: #000000; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;}
+.button { height:20px; FONT-FAMILY: "Times New Roman", "Times", "serif"; font-size: 10pt;} 
+.12_white {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #FFFFFF; line-height:140%;}
+.12_white2 {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #FFFFFF;}
+.12_white170 {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #FFFFFF; line-height:170%;}
+.11_white {font-family:"Times New Roman", "Times", "serif"; font-size: 8pt;color: #FFFFFF;}
+.11_white140 {font-family:"Times New Roman", "Times", "serif"; font-size: 8pt;color: #FFFFFF; line-height: 140%;}
+.12_yellow {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #FFEE2F;}
+.12_yellow140 {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #FFEE2F; line-height: 140%;}
+.12_yellow140_shadow {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #FFEE2F; line-height: 140%; filter: dropshadow(color:black,offx:1,offy:1,positive:1);}
+.12_yellow_shadow {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #FFEE2F; filter: dropshadow(color:black,offx:1,offy:1,positive:1);}
+.12_yellow2 {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #EFDBAD;}
+.12_yellow2_140 {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #EFDBAD; line-height: 140%;}
+.13_yellow3 {font-family:"Times New Roman", "Times", "serif"; font-size: 10pt;color: #FFEFD0;}
+.13_yellow3_140 {font-family:"Times New Roman", "Times", "serif"; font-size: 10pt;color: #FFEFD0; line-height: 140%;}
+.12_gray {font-family:"Times New Roman", "Times", "serif"; font-size: 9pt;color: #EFEFEF;}
+.13_gray3 {font-family:"Times New Roman", "Times", "serif"; font-size: 10pt;color: #D5D5D5;}
+.13_gray3_140 {font-family:"Times New Roman", "Times", "serif"; font-size: 10pt;color: #D5D5D5; line-height: 140%;}
+.verdana_8 {font-family:Verdana ; font-size: 8pt; color: 05BFFB;}
+.shadow_gray{font-family:"Times New Roman", "Times", "serif"; font-size: 10pt; color: #D5D5D5; line-height: 140%; filter: dropshadow(color:black,offx:1,offy:1,positive:1);}

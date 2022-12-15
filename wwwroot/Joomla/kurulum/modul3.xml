@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-9" ?>
+<item>
+<moduladi>Sayaç v1.0.3</moduladi>
+<aspcode><![CDATA[
+Response.Write "<div class=""module-box box-yellow icon-statistics""><div><div><div>"
+
+Response.Write "<h3>"& statistics &"</h3><table border=""0"" cellspacing=""2"" cellpadding=""2"">"
+	if ayarlar("online") = "1" then
+Response.Write "<tr><td>"&online&"</td><td>:</td><td>" & Virgulle(Application("strVisitors")) & "</td></tr>"
+	end if
+
+	if ayarlar("btekil") = "1" then
+Response.Write "<tr><td>"&today_singular&"</td><td>:</td><td>"& Virgulle(session("sayac_tekil")) & "</td></tr>"
+	end if
+
+	if ayarlar("bcogul") = "1" then
+Response.Write "<tr><td>"&today_plural&"</td><td>:</td><td>"& Virgulle(session("sayac_cogul")) & "</td></tr>"
+	end if
+
+'Dün bilgileri
+set dun = baglanti.execute("select * from gop_sayac where sayac_tarih='"& duntarih &"'")
+if dun.eof or dun.bof then
+
+	if ayarlar("dtekil") = "1" then
+Response.Write "<tr><td>"&yesterday_singular&"</td><td>:</td><td>---</td></tr><tr><td>"&yesterday_plural&"</td><td>:</td><td>---</td></tr>"
+	end if
+else
+	if ayarlar("dcogul") = "1" then
+Response.Write "<tr><td>"&yesterday_singular&"</td><td>:</td><td>"& Virgulle(dun("sayac_tekil")) &"</td></tr><tr><td>"&yesterday_plural&"</td><td>:</td><td>"& dun("sayac_cogul") &"</td></tr>"
+	end if
+end if
+'Dün bilgileri bitis
+
+	if ayarlar("toplamt") = "1" then
+Response.Write "<tr><td>"&total_singular&"</td><td>:</td><td>"& Virgulle(session("tekil_toplam")) & "</td></tr>"
+	end if
+	if ayarlar("toplamc") = "1" then
+Response.Write "<tr><td>"&total_plural&"</td><td>:</td><td>"& Virgulle(session("cogul_toplam")) & "</td></tr>"
+	end if
+
+	if ayarlar("aktifuye") = "1" then
+Response.Write "<tr><td>"&active_user&"</td><td>:</td><td>"& Virgulle(session("uye_topla"))&"</td></tr>"
+	end if
+
+	if ayarlar("sonuye") = "1" then
+Response.Write "<tr><td>"&last_user&"</td><td>:</td><td>"& session("son_uye")&"</td></tr>"
+	end if
+	
+	if ayarlar("veri") = "1" then
+Response.Write "<tr><td>"&news&"</td><td>:</td><td>" & Virgulle(session("toplam_haber")) & "</td></tr>"
+	end if
+	
+	if ayarlar("okunma") = "1" then
+Response.Write "<tr><td>"&reading &"</td><td>:</td><td>" & Virgulle(session("toplam_okuma")) & "</td></tr>"
+	end if
+	
+	if ayarlar("ip") = "1" then
+Response.Write "<tr><td>Ip</td><td>:</td><td>" & Request.ServerVariables("REMOTE_ADDR") & "</td></tr>"
+	end if
+
+Response.Write "</table>"
+
+
+Response.Write "</div></div></div></div>"
+
+
+]]></aspcode>
+<modulyer>sol</modulyer>
+<modulsira>6</modulsira>
+<modulizin>1</modulizin>
+<modulyazar>JoomlASP</modulyazar>
+<mail>info@joomlasp.com</mail>
+</item>

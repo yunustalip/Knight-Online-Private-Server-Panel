@@ -1,0 +1,62 @@
+BODY {
+ MARGIN: 5px 5px 10px; FONT: 9pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif; COLOR: #000000
+}
+A:link {
+	COLOR: #22229c 
+}
+A:visited {
+	COLOR: #22229c
+}
+A:hover {
+	COLOR: #ff4400
+}
+A:active {
+	COLOR: #ff4400
+}
+.page {
+	BACKGROUND: #ffffff
+}
+
+TD {
+	FONT: 9pt verdana, geneva, lucida, 'lucida grande', arial, helvetica, sans-serif
+}
+
+
+select {
+	border:1px solid #6896c3; FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif; HEIGHT: 110px
+}
+
+
+textarea {
+	border:1px solid #6896c3; FONT-SIZE: 10px;  COLOR: #000000; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif; 
+}
+
+
+.tborder {
+	BORDER-RIGHT: #0b198c 1px solid; BORDER-TOP: #0b198c 1px solid; BACKGROUND: #e1e4f2; BORDER-LEFT: #0b198c 1px solid; COLOR: #000000; BORDER-BOTTOM: #0b198c 1px solid
+}
+
+.tdbrd {
+ BORDER-BOTTOM: #FFCCFF 1px solid
+}
+
+.tdbrd1 {
+	BORDER-RIGHT: #0b198c 1px solid; BORDER-TOP: #0b198c 1px solid;  BORDER-LEFT: #0b198c 1px solid; COLOR: #000000; BORDER-BOTTOM: #0b198c 1px solid
+}
+
+.tdbrd2 {
+	BORDER-RIGHT: #0b198c 1px solid;   BORDER-BOTTOM: #0b198c 1px solid
+}
+
+
+
+
+input {
+	border:1px solid #6896c3; FONT-SIZE: 10px;  COLOR: #000000; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif; HEIGHT: 16px
+}
+
+
+
+
+
+

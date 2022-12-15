@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_Recordset1" value="name:No;datatype:DOUBLE,name:kategori;datatype:LONGCHAR,name:set_adi;datatype:LONGCHAR,name:fiyat;datatype:INTEGER" />
+	<infoitem key="UD_Recordset2" value="name:No;datatype:5,name:kategori;datatype:202,name:set_adi;datatype:202,name:fiyat;datatype:3" />
+	<infoitem key="UD_dsn_rs" value="name:No;datatype:DOUBLE,name:kategori;datatype:LONGCHAR,name:set_adi;datatype:LONGCHAR,name:fiyat;datatype:INTEGER" />
+	<infoitem key="UD_dsn__less_rs" value="name:No;datatype:5,name:kategori;datatype:202,name:set_adi;datatype:202,name:fiyat;datatype:3" />
+</info>
